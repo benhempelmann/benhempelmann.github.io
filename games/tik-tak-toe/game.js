@@ -6,6 +6,7 @@ let numTurns = 0;
 let buttons = gameBoard.getElementsByTagName('div');
 
 const buttonPressed = e => {
+    console.log(e);
     let element = e.target;
     addChoice(element);
 }
