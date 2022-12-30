@@ -2,39 +2,48 @@ const gameBoard = document.getElementById("game-board");
 
 let curr_player = 1;
 let numTurns = 0;
-window.onclick = e => {
-    const element = e.target
-    if (e.target.tagName == "DIV"){
-        let posx = Math.round(3*(element.offsetLeft)/gameBoard.offsetWidth);
-        let posy = Math.round(3*(element.offsetTop)/gameBoard.offsetHeight);
-        let pos = 3*posy +posx;
-        console.log(element.offsetTop);
-        if (element.innerHTML == ''){
-            numTurns++;
-            if (curr_player == 1){
-                element.innerHTML = "X"; 
-                curr_player = 2;
-            }
-            else{
-                element.innerHTML = "O"; 
-                curr_player = 1;
-            }
-            if(checkWinner(pos)){
-                setTimeout(() => {
-                    if(alert('The ' + element.innerHTML + '\'s won!')){}
-                    else    window.location.reload(); 
-                  }, "300")
-                
-            }
-            else if (numTurns == 9){
-                setTimeout(() => {
-                    if(alert('It\'s a Tie!')){}
-                    else    window.location.reload(); 
-                  }, "300")
-            }
 
+let buttons = gameBoard.getElementsByTagName('div');
+
+const buttonPressed = e => {
+    let element = e.target;
+    addChoice(element);
+}
+for (let button of buttons){
+    button.addEventListener("click", buttonPressed);
+    button.addEventListener("touchstart", buttonPressed);
+}
+
+function addChoice(element){
+    let posx = Math.round(3*(element.offsetLeft)/gameBoard.offsetWidth);
+    let posy = Math.round(3*(element.offsetTop)/gameBoard.offsetHeight);
+    let pos = 3*posy +posx;
+    if (element.innerHTML == ''){
+        numTurns++;
+        if (curr_player == 1){
+            element.innerHTML = "X"; 
+            curr_player = 2;
         }
+        else{
+            element.innerHTML = "O"; 
+            curr_player = 1;
+        }
+        if(checkWinner(pos)){
+            setTimeout(() => {
+                if(alert('The ' + element.innerHTML + '\'s won!')){}
+                else    window.location.reload(); 
+            }, "300")
+            
+        }
+        else if (numTurns == 9){
+            setTimeout(() => {
+                if(alert('It\'s a Tie!')){}
+                else    window.location.reload(); 
+            }, "300")
+        }
+
     }
+        
 }
 
 function checkWinner(pos){
@@ -65,3 +74,40 @@ function checkWinner(pos){
     }
     
 }
+
+
+
+// window.onclick = e => {
+//     const element = e.target
+//     if (e.target.tagName == "DIV"){
+//         let posx = Math.round(3*(element.offsetLeft)/gameBoard.offsetWidth);
+//         let posy = Math.round(3*(element.offsetTop)/gameBoard.offsetHeight);
+//         let pos = 3*posy +posx;
+//         console.log(element.offsetTop);
+//         if (element.innerHTML == ''){
+//             numTurns++;
+//             if (curr_player == 1){
+//                 element.innerHTML = "X"; 
+//                 curr_player = 2;
+//             }
+//             else{
+//                 element.innerHTML = "O"; 
+//                 curr_player = 1;
+//             }
+//             if(checkWinner(pos)){
+//                 setTimeout(() => {
+//                     if(alert('The ' + element.innerHTML + '\'s won!')){}
+//                     else    window.location.reload(); 
+//                   }, "300")
+                
+//             }
+//             else if (numTurns == 9){
+//                 setTimeout(() => {
+//                     if(alert('It\'s a Tie!')){}
+//                     else    window.location.reload(); 
+//                   }, "300")
+//             }
+
+//         }
+//     }
+// }
