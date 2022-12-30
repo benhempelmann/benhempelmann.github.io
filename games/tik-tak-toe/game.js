@@ -1,14 +1,16 @@
 const gameBoard = document.getElementById("game-board");
 
 let curr_player = 1;
-
+let numTurns = 0;
 window.onclick = e => {
     const element = e.target
     if (e.target.tagName == "DIV"){
-        let posx = Math.round(3*(element.offsetLeft - gameBoard.offsetLeft)/gameBoard.offsetWidth);
-        let posy = Math.round(3*(element.offsetTop - gameBoard.offsetTop)/gameBoard.offsetHeight);
-        let pos = 3*posy +posx
+        let posx = Math.round(3*(element.offsetLeft)/gameBoard.offsetWidth);
+        let posy = Math.round(3*(element.offsetTop)/gameBoard.offsetHeight);
+        let pos = 3*posy +posx;
+        console.log(element.offsetTop);
         if (element.innerHTML == ''){
+            numTurns++;
             if (curr_player == 1){
                 element.innerHTML = "X"; 
                 curr_player = 2;
@@ -23,7 +25,13 @@ window.onclick = e => {
                     else    window.location.reload(); 
                   }, "300")
                 
-            };
+            }
+            else if (numTurns == 9){
+                setTimeout(() => {
+                    if(alert('It\'s a Tie!')){}
+                    else    window.location.reload(); 
+                  }, "300")
+            }
 
         }
     }
