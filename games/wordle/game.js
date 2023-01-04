@@ -39,7 +39,7 @@ function setKeyboard(){
         newElement.appendChild(letter);
         newElement.classList.add("key");
         newElement.addEventListener("click", buttonPressed);
-        newElement.addEventListener("touchstart", buttonPressed);
+        newElement.addEventListener("touchend", buttonPressed);
         if (i<10){
             rows[0].appendChild(newElement);
         }
@@ -90,7 +90,7 @@ function gameLogic(btnContents){
 function keyboardListner(){
     window.addEventListener('keyup', function(event) {
         if (event.defaultPrevented) {
-            return; // Do nothing if the event was already processed
+            return;
         }
         if (event.keyCode >= 65 && event.keyCode <= 90){
             gameLogic(event.key.toUpperCase());
