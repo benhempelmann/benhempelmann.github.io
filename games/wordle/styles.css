@@ -6,7 +6,8 @@ body{
     margin: 0;
     background-color: lightgray;
     display: grid;
-    /* flex-direction: column; */
+    touch-action: manipulation;
+
 }
 
 #gameBoard{
@@ -32,6 +33,7 @@ body{
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(1,1fr);
     margin-bottom: 10vmin;
+    touch-action: manipulation;
 }
 
 .drow{
@@ -73,4 +75,5 @@ body{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    touch-action: manipulation;
 }
