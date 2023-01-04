@@ -31,6 +31,7 @@ body{
     justify-items: center;
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(1,1fr);
+    margin-bottom: 10vmin;
 }
 
 .drow{

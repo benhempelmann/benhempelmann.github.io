@@ -39,7 +39,7 @@ function setKeyboard(){
         newElement.appendChild(letter);
         newElement.classList.add("key");
         newElement.addEventListener("click", buttonPressed);
-        newElement.addEventListener("touchend", buttonPressed);
+        newElement.addEventListener("ontouchend", buttonPressed);
         if (i<10){
             rows[0].appendChild(newElement);
         }
@@ -63,6 +63,13 @@ function gameLogic(btnContents){
                     endGame();
                 }
                 else{
+                    console.log(CURR_ROW);
+                    if(CURR_ROW >= 5){
+                        setTimeout(() => {
+                            if(alert('Unlucky, you lost, the correct answer was ' + randWord)){}
+                                else    window.location.reload(); 
+                            }, "300")
+                    }
                     CURR_ROW ++;
                     CURR_LETTER = 0;
                     CURR_WORD = "";    
