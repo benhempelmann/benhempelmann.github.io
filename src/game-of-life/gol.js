@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react"
+import './gol.css'
 export default function GOL(){
     
     const [grid, setGrid] = useState([[]]);
