@@ -1,0 +1,79 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+    margin: 0;
+    background-color: lightgray;
+    display: grid;
+    touch-action: manipulation;
+
+}
+
+#gameBoard{
+    position: relative;
+    margin: 0;
+    background-color: transparent;
+    width: 60vmin;
+    height: 50vmin;
+    display: grid;
+    grid-template-rows: repeat(6,1fr);
+    margin-bottom: 2vmin;
+    margin-top: 2vmin;
+}
+
+#keyboard{
+    position: relative;
+    margin: 0;
+    background-color: transparent;
+    width: 100vmin;
+    height: 30vmin;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(1,1fr);
+    margin-bottom: 10vmin;
+    touch-action: manipulation;
+}
+
+.drow{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    background-color: transparent;
+    font-size: 5vmin;
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr)
+}
+
+.row{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    background-color: transparent;
+    display: grid;
+}
+.row1{grid-template-columns: repeat(10, 1fr);}
+.row2{grid-template-columns: repeat(9, 1fr);}
+.row3{grid-template-columns: repeat(9, 1fr);}
+
+.box{
+    margin: .5vmin;
+    display: flex;
+    border: .1vmin solid black;
+    border-radius: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.key{
+    margin: .3vmin;
+    display: flex;
+    border: .1vmin solid black;
+    background-color: transparent;
+    border-radius: 5%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+}

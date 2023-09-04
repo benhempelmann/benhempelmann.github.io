@@ -1,24 +1,6 @@
-.gol{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  .controls{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .grid{
-    margin: 10px;
-    display: grid;
-    grid-template-columns: repeat(var(--num-cols), 20px);
-    grid-template-rows: repeat(var(--num-rows), 20px);
-  }
-  
-  .cell{
-    width: 20px;
-    height: 20px;
-    border: 1px solid black;
-    /* border-left: 1px solid black; */
-    /* border-top: 1px solid black; */
-  }
+.grid{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 20px);
+  grid-template-rows: repeat(var(--num-rows), 20px);
+}

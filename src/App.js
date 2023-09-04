@@ -1,8 +1,8 @@
-import './App.css';
 import GOL from './game-of-life/gol';
+
 function App() {
   return (
-    <div className="App">
+    <div className="h-full w-full flex justify-center">
       <GOL/>
     </div>
   );

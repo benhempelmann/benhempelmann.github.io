@@ -85,19 +85,27 @@ export default function GOL(){
     }
 
     return(
-        <div className="gol">
-            <h1>Conways Game of Life</h1>
-            <div className="controls">
-                <button onClick={()=>setRunning(true)}>Start</button>
-                <button onClick={()=>setRunning(false)}>Stop</button>
-                <button onClick={()=>{setGrid([[]]);setRunning(false)}}>Reset</button>
+        <div className="flex flex-col text-center">
+            <h1 className="text-3xl">Conways Game of Life</h1>
+            <div className="flex justify-center mb-2/1.5 h-10">
+                <button onClick={()=>setRunning(true)} 
+                className="h-6bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                    Start</button>
+                <button onClick={()=>setRunning(false)} 
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                    Stop</button>
+                <button onClick={()=>{setGrid([[]]);setRunning(false)}} 
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                    Reset</button>
             </div>
             <div className="grid">
                 {grid.map((row) => {
                     return (
                         row.map((cell, idx) =>{
                             return(
-                                <div key={idx} onClick={cellClicked} className="cell" data-row={cell.row} data-col={cell.col} style={{backgroundColor: cell.alive?"black": "white"}}></div>
+                                <div key={idx} onClick={cellClicked} data-row={cell.row} data-col={cell.col} style={{backgroundColor: cell.alive?"black": "white"}}
+                                className="w-5 h-5 border border-black"
+                                ></div>
                             )
                         })
                     )
