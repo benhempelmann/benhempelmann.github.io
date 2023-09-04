@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 export default function GOL(){
-    const ROWS = Math.floor(window.innerHeight/20-7);
-    const COLS = Math.floor(window.innerWidth/20-3);
-
-    document.documentElement.style.setProperty("--num-rows", ROWS);
-    document.documentElement.style.setProperty("--num-cols", COLS);
+    
     const [grid, setGrid] = useState([[]]);
     const [running, setRunning] = useState(false);
+    const ROWS = useRef(Math.floor(window.innerHeight/20-7));
+    const COLS = useRef(Math.floor(window.innerWidth/20-3));
 
     //initial set and resetting the grid
     useEffect(()=>{
         if(grid.length === 1){
+            document.documentElement.style.setProperty("--num-rows", ROWS.current);
+            document.documentElement.style.setProperty("--num-cols", COLS.current);
             let newArr = [];
-            for(let i=0;i<ROWS;i++){
+            for(let i=0;i<ROWS.current;i++){
                 let newRow = []
-                for(let j=0;j<COLS;j++){
+                for(let j=0;j<COLS.current;j++){
                     newRow.push({row: i, col: j, alive: false});
                 }
                 newArr.push(newRow);
@@ -26,8 +26,8 @@ export default function GOL(){
     useEffect(()=>{
         if(running){
             let newGrid = JSON.parse(JSON.stringify(grid));
-            for(let i=0;i<ROWS;i++){
-                for(let j=0;j<COLS;j++){
+            for(let i=0;i<ROWS.current;i++){
+                for(let j=0;j<COLS.current;j++){
                     //main game rules
                     let numAlive = checkNeighbors(i,j);
                     // console.log(numAlive)
@@ -45,13 +45,9 @@ export default function GOL(){
             }
             setTimeout(()=>{
                 setGrid(newGrid);
-            },250)
+            },150)
         }
     },[grid, running])
-
-    useEffect(()=>{
-        // console.log("true");
-    }, [running])
 
     function checkNeighbors(row, col){
         let numAlive = 0;
