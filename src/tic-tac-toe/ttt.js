@@ -83,7 +83,7 @@ export default function TicTacToe(){
                         return(
                             <div data-row={Math.floor(idx/3)} data-col={idx%3} key={idx}
                             onClick={handleClick}
-                            className='flex items-center justify-center h-full w-full border border-black text-[30vh]' >
+                            className='flex items-center justify-center h-full w-full border border-black text-[30vmin]' >
                             {cell.val}</div>
                         )
                     })
