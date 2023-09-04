@@ -1,9 +1,7 @@
-import GOL from './game-of-life/gol';
-
 function App() {
   return (
-    <div className="h-full w-full flex justify-center">
-      <GOL/>
+    <div>
+      <div className='text-center text-5xl'>Main Page</div>
     </div>
   );
 }

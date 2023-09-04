@@ -5,7 +5,7 @@ export default function GOL(){
     const [grid, setGrid] = useState([[]]);
     const [running, setRunning] = useState(false);
     const ROWS = useRef(Math.floor(window.innerHeight/20-7));
-    const COLS = useRef(Math.floor(window.innerWidth/20-3));
+    const COLS = useRef(Math.floor(window.innerWidth/20-1));
 
     //initial set and resetting the grid
     useEffect(()=>{
@@ -85,7 +85,7 @@ export default function GOL(){
     }
 
     return(
-        <div className="flex flex-col text-center">
+        <div className="flex flex-col text-center justify-items-center">
             <h1 className="text-3xl">Conways Game of Life</h1>
             <div className="flex justify-center mb-2/1.5 h-10">
                 <button onClick={()=>setRunning(true)} 
@@ -98,7 +98,7 @@ export default function GOL(){
                 className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
                     Reset</button>
             </div>
-            <div className="grid">
+            <div className="golGrid">
                 {grid.map((row) => {
                     return (
                         row.map((cell, idx) =>{

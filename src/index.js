@@ -1,21 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import {createBrowserRouter, Outlet, RouterProvider,} from "react-router-dom";
 import './index.css';
 
+import NavBar from './navbar';
 import App from './App';
 import TicTacToe from './tic-tac-toe/ttt';
+import GOL from './game-of-life/gol';
 
+const AppLayout = () => {
+  return(
+    <>
+      <NavBar/>
+      <Outlet/>
+    </>
+  )
+}
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App/>
+    element: <AppLayout/>,
+    children: [
+      {
+        path: "/",
+        element: <App/>
+      },
+      {
+        path: "/tic-tac-toe",
+        element: <TicTacToe/>
+      },
+      {
+        path: "/game-of-life",
+        element: <GOL/>
+      },
+    ]
+
   },
-  {
-    path: "/tic-tac-toe",
-    element: <TicTacToe/>
-  },
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
