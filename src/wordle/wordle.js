@@ -136,7 +136,7 @@ export default function Wordle(){
     function renderKeyBoard(){
         const control = {onClick: handleClick};
         return (
-            <div className='h-full flex flex-col items-center justify-center'>
+            <div className='h-full flex flex-col items-center'>
                 <div className='flex flex-row'>
                     {tRow.map((letter)=>{
                         return(
