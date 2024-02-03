@@ -18,7 +18,7 @@ export default function Wordle(){
 
 
     useEffect(()=>{
-        document.addEventListener('keyup', handleKeyPress);
+        document.addEventListener('keydown', handleKeyPress);
 
         let newBoard = [];
         for(let i=0;i<30;i++){
@@ -135,9 +135,9 @@ export default function Wordle(){
     }
 
     function renderKeyBoard(){
-        const control = {onClick: handleClick,onTouchEnd: handleClick};
+        const control = {onClick: handleClick};
         return (
-            <div className='flex flex-col items-center'>
+            <div className='h-full flex flex-col items-center justify-center'>
                 <div className='flex flex-row'>
                     {tRow.map((letter)=>{
                         return(
@@ -164,7 +164,7 @@ export default function Wordle(){
         )
     }
     return(
-        <div className='flex flex-col items-center'>
+        <div className='h-full flex flex-col items-center'>
             <h1 className='text-5xl mb-4'>Wordle</h1>
             {renderBoard()}
             {renderKeyBoard()}
