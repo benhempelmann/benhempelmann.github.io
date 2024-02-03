@@ -121,10 +121,10 @@ export default function Wordle(){
 
     function renderBoard(){
         return(
-            <div className='grid grid-cols-5 grid-rows-6 w-full max-w-[45vh] mb-5 h-full border border-black rounded-lg'>
+            <div className='grid grid-cols-5 grid-rows-6 w-full max-w-[45vh] mb-5 h-[50%] border border-black rounded-lg'>
                 {boardRef.current.map((cell,idx)=>{
                     return(
-                        <div key={`cell${idx}`} className={`flex ${cell.color} border border-black rounded w-full h-[9vh] text-[8vmin] justify-center items-center`}>
+                        <div key={`cell${idx}`} className={`flex ${cell.color} border border-black rounded w-full h-[8vh] text-[8vmin] justify-center items-center`}>
                             {cell.letter}
                         </div>
                     )
