@@ -5,7 +5,7 @@ export default function NavBar(){
             <Link to='/' className='mr-2'>Home</Link>
             <Link to='/game-of-life' className='mr-2'>Game of Life</Link>
             <Link to='Tic-Tac-Toe' className='mr-2'>Tic-Tac-Toe</Link>
-            <Link className='mr-2'>Thing3</Link>
+            <Link to='/wordle' className='mr-2'>Wordle</Link>
             <Link className='mr-2'>Thing4</Link>
         </div>
     )    
