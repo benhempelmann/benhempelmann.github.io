@@ -14,7 +14,7 @@ export default function Wordle(){
     const tRow = ['Q','W','E','R','T','Y','U','I','O','P'];
     const mRow = ['A','S','D','F','G','H','J','K','L'];
     const bRow = ['ENT','Z','X','C','V','B','N','M','DEL'];
-    const keyStyle = 'border p-[3vw] rounded cursor-pointer';
+    const keyStyle = 'border p-[3vmin] rounded cursor-pointer';
 
 
     useEffect(()=>{
@@ -76,14 +76,13 @@ export default function Wordle(){
     function handleClick(e){
         const val = e.target.getAttribute('data-val');
         let typedStr = typed.current;
-        if(val === 'ENTER'){ //enter pressed
-            debugger;
+        if(val === 'ENT'){ //enter pressed
             if(typedStr.length === 5){
                 checkWinner(typedStr.toLowerCase());
                 return;
             }
         }
-        else if(val === 'DELETE'){
+        else if(val === 'DEL'){
             typedStr = typedStr.substring(0,Math.max(typedStr.length-1, 0));
         }
         else{
@@ -122,10 +121,10 @@ export default function Wordle(){
 
     function renderBoard(){
         return(
-            <div className='grid grid-cols-5 grid-rows-6 mb-5 border border-black rounded-lg'>
+            <div className='grid grid-cols-5 grid-rows-6 w-full max-w-[45vh] mb-5 h-full border border-black rounded-lg'>
                 {boardRef.current.map((cell,idx)=>{
                     return(
-                        <div key={`cell${idx}`} className={`flex ${cell.color} border border-black rounded w-[11vmin] h-[9vmin] text-[8vmin] justify-center items-center`}>
+                        <div key={`cell${idx}`} className={`flex ${cell.color} border border-black rounded w-full h-[9vh] text-[8vmin] justify-center items-center`}>
                             {cell.letter}
                         </div>
                     )
@@ -164,7 +163,7 @@ export default function Wordle(){
         )
     }
     return(
-        <div className='h-full flex flex-col items-center'>
+        <div className='h-[97%] flex flex-col items-center'>
             <h1 className='text-5xl mb-4'>Wordle</h1>
             {renderBoard()}
             {renderKeyBoard()}
