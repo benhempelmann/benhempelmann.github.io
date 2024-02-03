@@ -13,8 +13,8 @@ export default function Wordle(){
 
     const tRow = ['Q','W','E','R','T','Y','U','I','O','P'];
     const mRow = ['A','S','D','F','G','H','J','K','L'];
-    const bRow = ['ENTER','Z','X','C','V','B','N','M','DELETE'];
-    const keyStyle = 'border p-[2vw] rounded cursor-pointer';
+    const bRow = ['ENT','Z','X','C','V','B','N','M','DEL'];
+    const keyStyle = 'border p-[3vw] rounded cursor-pointer';
 
 
     useEffect(()=>{
