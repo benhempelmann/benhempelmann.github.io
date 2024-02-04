@@ -5,9 +5,9 @@ import './index.css';
 
 import NavBar from './navbar';
 import App from './App';
-import TicTacToe from './tic-tac-toe/ttt';
-import GOL from './game-of-life/gol';
-import Wordle from './wordle/wordle';
+import TicTacToe from './games/tic-tac-toe/ttt';
+import GOL from './games/game-of-life/gol';
+import Wordle from './games/wordle/wordle';
 
 const AppLayout = () => {
   return(

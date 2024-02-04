@@ -7,7 +7,6 @@ const NavBar = () => {
     { to: '/game-of-life', label: 'Game of Life' },
     { to: '/tic-tac-toe', label: 'Tic-Tac-Toe' },
     { to: '/wordle', label: 'Wordle' },
-    { to: '/thing4', label: 'Home' },
   ];
 
   const handleClick = () => {
