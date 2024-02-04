@@ -29,7 +29,7 @@ const Dropdown = ({ items, onClick }) => {
         <div
           className={`${
             isDropdownOpen ? 'block' : 'hidden'
-          } absolute bg-gray-200 border w-[15vw] border-gray-300 text-gray-800 rounded-md mt-0 space-y-2 px-4 py-2`}
+          } absolute bg-gray-200 border w-[30vh] border-gray-300 text-gray-800 rounded-md mt-0 space-y-2 px-4 py-2`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
