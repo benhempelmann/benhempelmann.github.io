@@ -77,7 +77,7 @@ export default function TicTacToe(){
         <div className='flex flex-col text-center items-center'>
             <h1 className='text-5xl mb-6'>Tic-Tac-Toe</h1>
             <h2>It's {player}'s Turn</h2>
-            <div className='h-[85vmin] w-[85vmin] grid grid-rows-3 grid-cols-3 border border-black'>
+            <div className='h-[83vmin] w-[83vmin] grid grid-rows-3 grid-cols-3 border border-black'>
                 {
                     board.map((cell, idx)=>{
                         return(

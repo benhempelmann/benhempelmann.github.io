@@ -163,7 +163,7 @@ export default function Wordle(){
         )
     }
     return(
-        <div className='h-[97%] flex flex-col items-center'>
+        <div className='flex flex-col items-center'>
             <h1 className='text-5xl mb-4'>Wordle</h1>
             {renderBoard()}
             {renderKeyBoard()}

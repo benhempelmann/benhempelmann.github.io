@@ -1,12 +1,29 @@
-import {Link} from 'react-router-dom';
-export default function NavBar(){
-    return(
-        <div className="flex flex-row">
-            <Link to='/' className='mr-2'>Home</Link>
-            <Link to='/game-of-life' className='mr-2'>Game of Life</Link>
-            <Link to='Tic-Tac-Toe' className='mr-2'>Tic-Tac-Toe</Link>
-            <Link to='/wordle' className='mr-2'>Wordle</Link>
-            <Link className='mr-2'>Thing4</Link>
-        </div>
-    )    
-}
+import { Link } from 'react-router-dom';
+import Dropdown from './dropdown';
+
+const NavBar = () => {
+  const navItems = [
+    { to: '/', label: 'Home' },
+    { to: '/game-of-life', label: 'Game of Life' },
+    { to: '/tic-tac-toe', label: 'Tic-Tac-Toe' },
+    { to: '/wordle', label: 'Wordle' },
+    { to: '/thing4', label: 'Home' },
+  ];
+
+  const handleClick = () => {
+    // Handle click logic if needed
+  };
+
+  return (
+    <nav className="bg-gray-200 p-4">
+      <div className="flex flex-row items-center">
+        <Link to="/" className="text-gray-800 font-semibold text-lg">
+          Gengiben
+        </Link>
+        <Dropdown items={navItems.filter((item) => item.label !== 'Home')} onClick={handleClick} />
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;
