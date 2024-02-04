@@ -18,7 +18,7 @@ const AppLayout = () => {
   )
 }
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     element: <AppLayout/>,
     children: [
