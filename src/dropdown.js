@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Dropdown = ({ items, onClick }) => {
+const Dropdown = ({items}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
     const handleMouseEnter = () => {
@@ -13,6 +13,10 @@ const Dropdown = ({ items, onClick }) => {
         setIsDropdownOpen(false);
       }
     };
+
+    const handleClick = (e) => {
+        setIsDropdownOpen(false);
+    }
   
     return (
       <div
@@ -21,7 +25,6 @@ const Dropdown = ({ items, onClick }) => {
         onMouseLeave={handleMouseLeave}
       >
         <button
-          onClick={onClick}
           className="text-gray-800 hover:text-gray-600 focus:outline-none px-4"
         >
           Games
@@ -37,7 +40,7 @@ const Dropdown = ({ items, onClick }) => {
             <React.Fragment key={index}>
               <Link
                 to={item.to}
-                onClick={onClick}
+                onClick={handleClick}
                 className="block hover:bg-gray-300 px-4 py-2 rounded-md"
               >
                 {item.label}
