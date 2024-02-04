@@ -1,0 +1,6 @@
+.golGrid{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 20px);
+  grid-template-rows: repeat(var(--num-rows), 20px);
+}
