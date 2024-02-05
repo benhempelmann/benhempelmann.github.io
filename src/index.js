@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, createHashRouter, Outlet, RouterProvider,} from "react-router-dom";
+import {createBrowserRouter, Outlet, RouterProvider,} from "react-router-dom";
 import './index.css';
 
 import NavBar from './navbar';
@@ -18,7 +18,7 @@ const AppLayout = () => {
   )
 }
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     element: <AppLayout/>,
     children: [
