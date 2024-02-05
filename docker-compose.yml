@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 services:
   website:
     stdin_open: true
@@ -7,5 +7,3 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-    environment:
-      - CHOKIDAR_USEPOLLING=true
