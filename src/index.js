@@ -8,15 +8,18 @@ import App from './App';
 import TicTacToe from './games/tic-tac-toe/ttt';
 import GOL from './games/game-of-life/gol';
 import Wordle from './games/wordle/wordle';
+import Fractal from './graphics/fractal/fractal';
 
 const AppLayout = () => {
-  return(
+  return (
     <>
-      <NavBar/>
-      <Outlet/>
+      <NavBar />
+      <Outlet />
     </>
-  )
-}
+  );
+};
+
+
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/wordle",
         element: <Wordle/>
+      },
+      {
+        path: "/fractal",
+        element: <Fractal/>
       },
     ]
 

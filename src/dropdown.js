@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Dropdown = ({items}) => {
+const Dropdown = ({items,title}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
     const handleMouseEnter = () => {
@@ -27,7 +27,7 @@ const Dropdown = ({items}) => {
         <button
           className="text-gray-800 hover:text-gray-600 focus:outline-none px-4"
         >
-          Games
+          {title}
         </button>
         <div
           className={`${
