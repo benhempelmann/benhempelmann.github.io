@@ -4,11 +4,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "gl-matrix": "^3.4.3",
+    "@react-three/drei": "^9.99.3",
+    "@react-three/xr": "^5.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1",
     "react-scripts": "^5.0.1",
+    "three": "^0.161.0",
     "web-vitals": "^3.5.2"
   },
   "scripts": {

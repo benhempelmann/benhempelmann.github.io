@@ -1,8 +1,8 @@
 precision highp float;
 
-uniform vec2 u_resolution;
-uniform vec2 u_center;
-uniform float u_scale;
+uniform vec2 resolution;
+uniform vec2 center;
+uniform float zoom;
 
 const float escapeRadius = 4.0;
 const float escapeRadius2 = escapeRadius * escapeRadius;
@@ -26,11 +26,11 @@ vec3 paletteColor(float t) {
 }
 
 void main() {
-  float u = (gl_FragCoord.x - u_resolution.x * 0.5) / (u_scale * u_resolution.x) + u_center.x;
-  float v = (gl_FragCoord.y - u_resolution.y * 0.5) / (u_scale * u_resolution.y) + u_center.y;
+  float u = (gl_FragCoord.x - resolution.x * 0.5) / (zoom * resolution.x) + center.x;
+  float v = (gl_FragCoord.y - resolution.y * 0.5) / (zoom * resolution.y) + center.y;
   vec2 uv = vec2(u,v);
 
-  // vec2 uv = (gl_FragCoord.xy - u_resolution.xy * vec2(1.0 / 2.0, 1.0 / 2.0)) / (u_scale * 200.0) + u_center;
+  // vec2 uv = (gl_FragCoord.xy - resolution.xy * vec2(1.0 / 2.0, 1.0 / 2.0)) / (zoom * 200.0) + center;
   
   vec2 z = vec2(0.0);
   vec2 c = uv;
