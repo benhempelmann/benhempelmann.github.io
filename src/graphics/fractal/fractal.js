@@ -4,7 +4,7 @@ const Fractal = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    let center = [0.0, 0.0]; // Initial center
+    let center = [-.5, 0.0]; // Initial center
     let origin = [0,0]; //overwritten in render;
     let zoomFactor = .7;
 
@@ -78,8 +78,8 @@ const Fractal = () => {
 
       const render = () => {
         const { width, height } = canvas.getBoundingClientRect();
-        canvas.width = width * window.devicePixelRatio;
-        canvas.height = height * window.devicePixelRatio;
+        canvas.width = width;
+        canvas.height = height;
         origin = [canvas.width/2,canvas.height/2];
 
         gl.viewport(0, 0, canvas.width, canvas.height);
