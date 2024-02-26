@@ -4,9 +4,9 @@ const Fractal = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    let center = [0.0, 0.0]; // Initial center
+    let center = new Float64Array([-.5, 0.0]); // Initial center
     let origin = [0,0]; //overwritten in render;
-    let zoomFactor = .7;
+    let zoomFactor = Number(.7);
 
     function pixelToCoord(pix){
       let x = (pix[0] - origin[0]) / (zoomFactor*origin[0]) + center[0];
@@ -86,8 +86,9 @@ const Fractal = () => {
 
         gl.clear(gl.COLOR_BUFFER_BIT);
 
+        let doubleCenter = new Float64Array([Math.fround(center[0]), Math.fround(center[0]) - center[0], Math.fround(center[1]), Math.fround(center[1]) - center[1]]);
         gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
-        gl.uniform2fv(centerUniformLocation, center);
+        gl.uniform4fv(centerUniformLocation, doubleCenter);
         gl.uniform2fv(originUniformlocation, origin);
         gl.uniform1f(scaleUniformLocation, zoomFactor);
 
