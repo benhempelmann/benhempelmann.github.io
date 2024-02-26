@@ -36,7 +36,7 @@ const Fractal = () => {
 
     const loadShaders = async () => {
       const vertexShaderSource = await fetchShader('/shaders/vert.glsl');
-      const fragmentShaderSource = await fetchShader('/shaders/frag.glsl');
+      const fragmentShaderSource = await fetchShader('/shaders/frag.grayscale.glsl');
 
       const vertexShader = gl.createShader(gl.VERTEX_SHADER);
       gl.shaderSource(vertexShader, vertexShaderSource);
@@ -86,11 +86,15 @@ const Fractal = () => {
 
         gl.clear(gl.COLOR_BUFFER_BIT);
 
-        let doubleCenter = new Float64Array([Math.fround(center[0]), Math.fround(center[0]) - center[0], Math.fround(center[1]), Math.fround(center[1]) - center[1]]);
-        gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
+        let doubleCenter = new Float64Array([Math.fround(center[0]), Math.fround(center[0]) - Number(center[0]), Math.fround(center[1]), Math.fround(center[1]) - Number(center[1])]);
+        let doubleOrigin = new Float64Array([Math.fround(origin[0]), Math.fround(origin[0]) - Number(origin[0]), Math.fround(origin[1]), Math.fround(origin[1]) - Number(origin[1])]);
+        let doubleRes = new Float64Array([Math.fround(canvas.width), Math.fround(canvas.width) - Number(canvas.width), Math.fround(canvas.height), Math.fround(canvas.height) - Number(canvas.height)]);
+        let doubleZoom = new Float64Array([Math.fround(zoomFactor), Math.fround(zoomFactor) - Number(zoomFactor)]);
+        console.log(doubleOrigin);
+        gl.uniform4fv(resolutionUniformLocation, doubleRes);
         gl.uniform4fv(centerUniformLocation, doubleCenter);
-        gl.uniform2fv(originUniformlocation, origin);
-        gl.uniform1f(scaleUniformLocation, zoomFactor);
+        gl.uniform4fv(originUniformlocation, doubleOrigin);
+        gl.uniform2fv(scaleUniformLocation, doubleZoom);
 
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       };
