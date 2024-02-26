@@ -63,9 +63,15 @@ const Fractal = () => {
       gl.useProgram(program);
 
       const positionBuffer = gl.createBuffer();
+      let points = [];
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      for(let i=0;i<canvas.width*window.devicePixelRatio;i++){
+        for(let j=0;j<canvas.height*window.devicePixelRatio;j++){
+          points.push(i,j);
+        }
+      }
       const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
-      gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW);
 
       const positionAttribLocation = gl.getAttribLocation(program, 'aPosition');
       gl.vertexAttribPointer(positionAttribLocation, 2, gl.FLOAT, false, 0, 0);
@@ -96,7 +102,7 @@ const Fractal = () => {
         gl.uniform4fv(originUniformlocation, doubleOrigin);
         gl.uniform2fv(scaleUniformLocation, doubleZoom);
 
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        gl.drawArrays(gl.POINTS, 0, points.length/2);
       };
 
       canvas.addEventListener("click", (e) => {
