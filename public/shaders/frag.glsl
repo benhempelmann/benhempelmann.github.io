@@ -2,11 +2,12 @@ precision highp float;
 
 uniform vec2 u_resolution;
 uniform vec2 u_center;
+uniform vec2 u_origin;
 uniform float u_scale;
 
 const float escapeRadius = 4.0;
 const float escapeRadius2 = escapeRadius * escapeRadius;
-const int maxIterations = 40;
+const int maxIterations = 100;
 const float invMaxIterations = 1.0 / float(maxIterations);
 
 vec2 ipow2(vec2 v) {
@@ -26,11 +27,11 @@ vec3 paletteColor(float t) {
 }
 
 void main() {
-  float u = (gl_FragCoord.x - u_resolution.x * 0.5) / (u_scale * u_resolution.x) + u_center.x;
-  float v = (gl_FragCoord.y - u_resolution.y * 0.5) / (u_scale * u_resolution.y) + u_center.y;
+  float u = (gl_FragCoord.x - u_origin.x) / (u_scale * u_origin.x) + u_center.x;
+  float v = (u_resolution.y - gl_FragCoord.y - u_origin.y) / (u_scale * u_origin.y) + u_center.y;
   vec2 uv = vec2(u,v);
+  // vec2 uv = (gl_FragCoord.xy - u_origin) / (u_scale * u_origin) + u_center;
 
-  // vec2 uv = (gl_FragCoord.xy - u_resolution.xy * vec2(1.0 / 2.0, 1.0 / 2.0)) / (u_scale * 200.0) + u_center;
   
   vec2 z = vec2(0.0);
   vec2 c = uv;

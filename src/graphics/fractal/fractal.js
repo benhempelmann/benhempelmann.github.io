@@ -5,7 +5,20 @@ const Fractal = () => {
 
   useEffect(() => {
     let center = [0.0, 0.0]; // Initial center
-    let scale = 1.0; // Initial scale
+    let origin = [0,0]; //overwritten in render;
+    let zoomFactor = .7;
+
+    function pixelToCoord(pix){
+      let x = (pix[0] - origin[0]) / (zoomFactor*origin[0]) + center[0];
+      let y = (pix[1] - origin[1]) / (zoomFactor*origin[1]) + center[1];
+      return([x,y]);
+    }
+
+    function zoom(zoomPix, zoomIn){
+      center = pixelToCoord(zoomPix);
+      zoomFactor *= 2.5;
+      
+    }
 
     const canvas = canvasRef.current;
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -61,12 +74,13 @@ const Fractal = () => {
       const resolutionUniformLocation = gl.getUniformLocation(program, 'u_resolution');
       const centerUniformLocation = gl.getUniformLocation(program, 'u_center');
       const scaleUniformLocation = gl.getUniformLocation(program, 'u_scale');
+      const originUniformlocation = gl.getUniformLocation(program, 'u_origin');
 
       const render = () => {
         const { width, height } = canvas.getBoundingClientRect();
-
         canvas.width = width * window.devicePixelRatio;
         canvas.height = height * window.devicePixelRatio;
+        origin = [canvas.width/2,canvas.height/2];
 
         gl.viewport(0, 0, canvas.width, canvas.height);
 
@@ -74,27 +88,17 @@ const Fractal = () => {
 
         gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
         gl.uniform2fv(centerUniformLocation, center);
-        gl.uniform1f(scaleUniformLocation, scale);
+        gl.uniform2fv(originUniformlocation, origin);
+        gl.uniform1f(scaleUniformLocation, zoomFactor);
 
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       };
 
-      canvas.addEventListener("wheel", (e) => {
+      canvas.addEventListener("click", (e) => {
         e.preventDefault();
-
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = (e.clientX - rect.left) / rect.width * 2 - 1;
-        const mouseY = 1 - (e.clientY - rect.top) / rect.height * 2;
-
-        const scaleFactor = e.deltaY < 0 ? 1.05 : 0.95;
-
-        // Update scale based on the viewport size
-        scale *= scaleFactor;
-
-        // Adjust center to zoom around the mouse pointer
-        center[0] -= (mouseX - center[0]) * (1-scaleFactor);
-        center[1] -= (mouseY - center[1]) * (1-scaleFactor);
-
+        let zoomIn = true;
+        if(e.deltaY < 0) zoomIn = false;
+        zoom([e.x,e.y],zoomIn);
         render();
       });
 
